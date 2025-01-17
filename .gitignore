@@ -3,3 +3,4 @@ venv_*/
 __pycache__/
 .vscode/
 .DS_Store
+chroma_langchain_db/
