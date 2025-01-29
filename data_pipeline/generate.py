@@ -1,13 +1,12 @@
-import os
+from typing import TYPE_CHECKING
 
-from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEndpoint
-from openai import OpenAI
 from transformers import pipeline
 
+if TYPE_CHECKING:
+    from openai import OpenAI
 
-def generate_response_with_gpt4(context: str, question: str):
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+def generate_response_with_gpt4(client: "OpenAI", context: str, question: str):
     prompt = f"Context:\n{context}\n\nQuestion: {question}"
 
     response = client.chat.completions.create(
